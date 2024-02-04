@@ -4,7 +4,7 @@ A Github Pages CNAME generator for Nuxt applications.
 
 ## Usage
 
-1. Add `nuxt-cname-generator` dependency to your project.
+First, add `nuxt-cname-generator` dependency to your project.
 
 ```bash
 # Using pnpm
@@ -17,13 +17,24 @@ yarn add --dev nuxt-cname-generator
 npm install --save-dev nuxt-cname-generator
 ```
 
-2. Add `nuxt-cname-generator` to the `modules` section of `nuxt.config.ts`.
+Then, add `nuxt-cname-generator` to the `modules` section of `nuxt.config.ts`.
 
-```js
+```ts
 export default defineNuxtConfig({
   modules: [
     'nuxt-cname-generator'
   ]
+})
+```
+
+Finally, configure it in your `nuxt.config.ts`.
+
+```ts
+export default defineNuxtConfig({
+  // Other config options.
+  cname: {
+    host: 'example.com'
+  }
 })
 ```
 

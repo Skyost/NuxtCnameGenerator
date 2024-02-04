@@ -9,7 +9,7 @@ export interface ModuleOptions {
   /**
    * The hostname to be used in the generated CNAME file.
    */
-  hostname: string;
+  host: string;
 }
 
 /**
@@ -29,7 +29,7 @@ export default defineNuxtModule<ModuleOptions>({
     compatibility: { nuxt: '^3.0.0' }
   },
   defaults: {
-    hostname: 'localhost:3000'
+    host: 'localhost:3000'
   },
   setup (options, nuxt) {
     const resolver = createResolver(import.meta.url)
@@ -49,11 +49,11 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     // Write CNAME file.
-    let host = options.hostname
+    let host = options.host
     try {
-      host = (new URL(options.hostname)).host
+      host = (new URL(options.host)).host
     } catch (_) {
-      logger.warn(`Failed to parse host name : ${options.hostname}. We will still use it, but please make sure that there is no error.`)
+      // No need to log this as we still have an host name.
     }
     fs.writeFileSync(filePath, host)
     logger.success(`Generated CNAME for ${host}.`)
