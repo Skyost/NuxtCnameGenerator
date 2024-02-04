@@ -22,6 +22,7 @@ Then, add `nuxt-cname-generator` to the `modules` section of `nuxt.config.ts`.
 ```ts
 export default defineNuxtConfig({
   modules: [
+    // Some other modules.
     'nuxt-cname-generator'
   ]
 })
@@ -39,6 +40,7 @@ export default defineNuxtConfig({
 ```
 
 That's it !
+Your CNAME will be available in the `dist` folder when you will run `nuxi generate`.
 
 ## License
 
