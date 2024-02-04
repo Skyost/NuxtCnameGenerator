@@ -1,6 +1,6 @@
 {
   "name": "nuxt-cname-generator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Github Pages CNAME generator for Nuxt applications.",
   "repository": "Skyost/NuxtCnameGenerator",
   "license": "MIT",
