@@ -7,13 +7,13 @@ A Github Pages CNAME generator for Nuxt applications.
 First, add `nuxt-cname-generator` dependency to your project.
 
 ```bash
-# Using pnpm
+# Using pnpm.
 pnpm add -D nuxt-cname-generator
 
-# Using yarn
+# Using yarn.
 yarn add --dev nuxt-cname-generator
 
-# Using npm
+# Using npm.
 npm install --save-dev nuxt-cname-generator
 ```
 
