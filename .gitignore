@@ -58,3 +58,4 @@ Temporary Items
 # Playground
 playground/.nuxt
 playground/node_modules
+playground/package-lock.json

@@ -26,14 +26,14 @@ export default defineNuxtModule<ModuleOptions>({
   meta: {
     name,
     configKey: 'cname',
-    compatibility: { nuxt: '^3.0.0' }
+    compatibility: { nuxt: '^4.0.0' }
   },
   defaults: {
     host: 'localhost:3000'
   },
   setup (options, nuxt) {
     const resolver = createResolver(import.meta.url)
-    const filePath = resolver.resolve(nuxt.options.srcDir, 'node_modules/.cache/cname/CNAME')
+    const filePath = resolver.resolve(nuxt.options.rootDir, 'node_modules/.cache/cname/CNAME')
     const fileDirectory = path.dirname(filePath)
 
     // Create directory if it doesn't exist.
@@ -52,10 +52,17 @@ export default defineNuxtModule<ModuleOptions>({
     let host = options.host
     try {
       host = (new URL(options.host)).host
-    } catch (_) {
-      // No need to log this as we still have an host name.
+    } catch (_) {}
+    if (!host && nuxt.options.site?.url) {
+      try {
+        host = (new URL(nuxt.options.site!.url)).host
+      } catch (_) {}
     }
-    fs.writeFileSync(filePath, host)
-    logger.success(`Generated CNAME for ${host}.`)
+    if (host) {
+      fs.writeFileSync(filePath, host)
+      logger.success(`Generated CNAME for ${host}.`)
+    } else {
+      logger.error('Failed to generate CNAME. Please provide a valid host in the module options.')
+    }
   }
 })
