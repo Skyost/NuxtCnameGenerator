@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
   modules: ['../src/module'],
+  devtools: { enabled: true },
   cname: {
-    host: 'https://example.com'
+    host: 'https://example.com',
   },
-  devtools: { enabled: true }
 })
